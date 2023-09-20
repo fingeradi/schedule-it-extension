@@ -9,10 +9,10 @@ chrome.runtime.onMessage.addListener(async function (request, sender, sendRespon
 // Create an AbortController instance
 const controller = new AbortController();
 const signal = controller.signal;
+const t = 0; //test
 
 // Set a timeout in milliseconds (e.g., 10 seconds)
 const timeoutDuration = 30000; // 30 seconds
-
 // Start the fetch request with the AbortController's signal
 const fetchPromise = fetch('http://localhost:8000', {
   method: 'POST',
