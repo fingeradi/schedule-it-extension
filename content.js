@@ -26,6 +26,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             for (let i = 0; i < rows.length; i++) {
                 const row = rows[i];
                 const cells = row.querySelectorAll("td");
+                const sylabuslink_intial = 'https://ims.tau.ac.il/';
+
             
                 // Check if the row has at least 2 cells
                 if (cells.length >= 2) {
@@ -35,7 +37,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     const Lecturer = cells[6].textContent.trim();
                     const Semester = cells[7].textContent.trim();
                     const Day = cells[8].textContent.trim();
-                    const Hours = cells[9].textContent.trim();
+                    const Hours = cells[9].textContent.trim().replace(/\^/g, '');
                     const building = cells[10].textContent.trim();
                     const Room = cells[11].textContent.trim();
                     const syllabusLink = cells[12].querySelector("a").getAttribute("href");
@@ -51,9 +53,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                         Day: Day,
                         startTime: startTime,
                         endTime: endTime, 
-                        Building: building,
-                        Room: Room,
-                        syllabusLink: syllabusLink
+                        building: building,
+                        room: Room,
+                        syllabusLink: sylabuslink_intial+syllabusLink
                     };
 
                     // Push the object to the array
