@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const emailInput = document.getElementById("email-input");
     const showButton = document.getElementById("show-button");
     const scheduleButton = document.getElementById("schedule");
+    const errorMessage = document.getElementById("error-message"); // Added this line
 
     showButton.addEventListener("click", function() {
         const email = document.getElementById("email").value;
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("email is", email);
             emailInput.style.display = "none";
             scheduleButton.style.display = "block";
+            errorMessage.style.display = "none"; 
 
             // Add click event listener to the scheduleButton
             scheduleButton.addEventListener("click", function() {
@@ -22,12 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         } else {
             console.log("Invalid email:", email);
-            errorMessage.style.display = "block";
+            errorMessage.style.display = "block"; // Show the error message for invalid email
         }
     });
 
     function isValidEmail(email) {
-        // Regular expression for basic email validation
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         return emailPattern.test(email);
     }

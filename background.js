@@ -4,6 +4,7 @@ let activeTab;
 
 chrome.runtime.onMessage.addListener(async function (request, sender, sendResponse) {
     if (request.action === 'messageFromContentScript') {
+        console.log('messageFromContentScript');
         console.log('Received message in background script:', request.data);
 
 // Create an AbortController instance
@@ -19,8 +20,8 @@ const fetchPromise = fetch('http://localhost:8000', {
   headers: {
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify(request.data), // Replace with your data
-  signal, // Attach the signal to the request
+  body: JSON.stringify(request.data), 
+  signal,
 });
 
 // Set a timeout using setTimeout

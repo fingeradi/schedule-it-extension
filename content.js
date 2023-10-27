@@ -31,7 +31,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             
                 // Check if the row has at least 2 cells
                 if (cells.length >= 2) {
-                    const courseNum = cells[1].textContent.trim();
+                    var courseNum = cells[1].textContent.trim();
+                    var courseGroup = cells[2].textContent.trim();
                     const courseName = cells[3].textContent.trim();
                     const courseType = cells[4].textContent.trim();
                     const Lecturer = cells[6].textContent.trim();
@@ -45,7 +46,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
                     // Create an object for the row
                     const rowData = {
-                        courseNum: courseNum,
+                        courseNum: `${courseNum}-${courseGroup}`,
                         courseName: courseName, 
                         courseType: courseType,
                         Lecturer: Lecturer,
