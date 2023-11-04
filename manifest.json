@@ -5,10 +5,10 @@
     "version": "1.0.0",
     "description": "Managing your schedule easily!",
     "permissions": [
-        "identity", "tabs", "activeTab", "webRequest", "webNavigation", "storage", "downloads", "http://localhost/8000"
+        "identity", "tabs", "activeTab", "webRequest", "webNavigation", "storage", "downloads"
       ],
       "host_permissions": [
-        "https://iims.tau.ac.il/Tal/Sys/Main*"
+        "https://iims.tau.ac.il/Tal/Sys/Main*", "http://localhost/8000"
       ],
     "content_scripts": [
       {

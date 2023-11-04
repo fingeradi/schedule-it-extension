@@ -51,8 +51,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                         Day: Day,
                         startTime: startTime,
                         endTime: endTime, 
-                        Building: building,
-                        Room: Room,
+                        building: building,
+                        room: Room,
                         syllabusLink: syllabusLink
                     };
 
@@ -60,7 +60,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                     objectsArray.push(rowData);
                 }
             }
-            let studentId;
+            let studentId, studentName;
 
             const studentInfoElement = iframeDocument.querySelectorAll(".msgsmal2");
             studentInfoElement.forEach(studentInfoElement => {
@@ -69,7 +69,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 studentId = studentIdMatch ? studentIdMatch[1] : null;
                 // Extract student name
                 const studentNameMatch = studentInfoText.match(/^\s*(.+)\s+\(\d+\)/);
-                const studentName = studentNameMatch ? studentNameMatch[1] : null;
+                studentName = studentNameMatch ? studentNameMatch[1] : null;
 
                 console.log("Student ID:", studentId); 
                 console.log("Student Name:", studentName);
@@ -81,7 +81,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
             // Log the array of objects
             console.log(objectsArray);
-            chrome.runtime.sendMessage({ action: 'messageFromContentScript', data: {objectsArray, studentId, userEmail} });
+            chrome.runtime.sendMessage({ action: 'messageFromContentScript', data: {objectsArray, studentId, userEmail, studentName} });
 
             
         

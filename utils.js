@@ -3,10 +3,11 @@ console.log("utils");
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.action === 'messageToUtilsFromBck') {
         console.log('Listening from utils')
-        const CLIENT_ID = '239422582651-atghi4bq7u8m6ng9hn1qkucten29hapc.apps.googleusercontent.com';
-        const API_KEY = 'AIzaSyAMhmU3PqcVZ08iT2QIs6lfD78OKxUVKBc'; // Replace with your actual API key
+        const CLIENT_ID = '888686870033-3grhna0rln149bqs13r20s2j6vs3hff1.apps.googleusercontent.comm';
+        const API_KEY = 'AIzaSyCD-DWZTxpbD9gl7ZShIHUvSsHU7BASDeI'; // Replace with your actual API key
         const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
         const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
+        console.log(`API KEY: ${API_KEY}, CLIENT ID: ${CLIENT_ID}`)
 
         let tokenClient;
         let gapiInited = false;
@@ -72,7 +73,7 @@ async function listMajors() {
     try {
         // Fetch first 10 files
         response = await gapi.client.sheets.spreadsheets.values.get({
-            spreadsheetId: '10Uk2J-Msi7mYCOB9VZRAfVJZVByL7BfAm3bun2G0vzA',
+            spreadsheetId: '1rMYWr_X-PJBW7SPVeX_3bYAXTQ6B9UZXWr-rXVN_WIY',
             range: 'students!A2:E',
         });
     } catch (err) {
