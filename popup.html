@@ -44,6 +44,11 @@
             margin-bottom: 10px;
         }
 
+        /* Add the error class styling */
+        .error {
+            border: 1px solid red;
+        }
+
         button {
             background-color: #007bff;
             color: #fff;
@@ -61,9 +66,27 @@
         }
 
         .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #333;
             color: #999;
-            font-size: 12px;
-            margin-top: 5px;
+            padding: 5px;
+            border-radius: 3px;
+            z-index: 1;
+        }
+
+        .tooltip-icon {
+            cursor: pointer;
+            font-size: 20px;
+            margin-left: 5px;
+            border-radius: 50%;
+            background-color: #007bff; /* Choose your preferred background color */
+            color: white; /* Choose your preferred text color */
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -71,10 +94,15 @@
     <div class="popup-container">
         <h1>Welcome to scheduleIt</h1>
         <div id="email-input">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" required>
+            <label for="email" style="display: flex; align-items: center;">
+                Please insert your email:
+                <div class="tooltip-icon" id="tooltip-icon">ℹ️</div>
+            </label>
+            <div class="tooltip" id="tooltip">Invitations of courses schedule will be sent to this email.</div>            
+            <!-- Add the error class to the input element -->
+            <input type="email" id="email" required class="error">
             <button type="button" id="show-button">Continue</button>
-            <p id="error-message" style="display: none;">Invalid email. Please try again.</p>
+            <p id="error-message" style="display: none; color: red;">Invalid email. Please try again.</p>
         </div>
         <div class="button-container">
             <button type="button" id="schedule" style="display: none;">View Schedule</button>
@@ -82,7 +110,5 @@
     </div>
     <script src="popup.js"></script>
     <script src="utils.js"></script>
-    <!-- <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
-    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script> -->
 </body>
 </html>
