@@ -4,7 +4,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.action === 'messageToUtilsFromBck') {
         console.log('Listening from utils')
         const CLIENT_ID = '888686870033-3grhna0rln149bqs13r20s2j6vs3hff1.apps.googleusercontent.comm';
+        console.log('CLIENT_ID')
         const API_KEY = 'AIzaSyCD-DWZTxpbD9gl7ZShIHUvSsHU7BASDeI'; // Replace with your actual API key
+        console.log('API_KEY')
         const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
         const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
         console.log(`API KEY: ${API_KEY}, CLIENT ID: ${CLIENT_ID}`)
