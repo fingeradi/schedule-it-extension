@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const emailInput = document.getElementById("email-input");
     const showButton = document.getElementById("show-button");
     const scheduleButton = document.getElementById("schedule");
+    const errorMessage = document.getElementById("error-message"); // Add this line
 
     showButton.addEventListener("click", function() {
         const email = document.getElementById("email").value;
