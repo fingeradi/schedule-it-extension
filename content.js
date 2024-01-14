@@ -1,4 +1,4 @@
-console.log("content here");
+console.log("Starting content file...");
 // Listen for messages from the popup
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -30,6 +30,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 // Check if the row has at least 2 cells
                 if (cells.length >= 2) {
                     const courseNum = cells[1].textContent.trim();
+                    const courseTypeId = cells[2].textContent.trim();
                     const courseName = cells[3].textContent.trim();
                     const courseType = cells[4].textContent.trim();
                     const Lecturer = cells[6].textContent.trim();
@@ -43,7 +44,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
                     // Create an object for the row
                     const rowData = {
-                        courseNum: courseNum,
+                        courseNum: `${courseNum}-${courseTypeId}`,
                         courseName: courseName, 
                         courseType: courseType,
                         Lecturer: Lecturer,
@@ -94,15 +95,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 
     }document.addEventListener("DOMContentLoaded", function() {
-        // Add a click event listener to the "Add to my calendar" button
         const addclndr = document.getElementById("addclndr");
         addclndr.addEventListener("click", function() {
             console.log("hi");
-            const targetURL = "https://localhost:8000"; // Replace with your desired URL
+            const targetURL = "https://localhost:8000";
             chrome.tabs.create({ url: targetURL });
         });
     
-        // Add a click event listener to the "My holy time schedule" button
         const schedule = document.getElementById("schedule");
         schedule.addEventListener("click", function() {
             chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {

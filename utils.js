@@ -1,4 +1,4 @@
-console.log("utils");
+console.log("Starting utils...");
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.action === 'messageToUtilsFromBck') {
@@ -29,7 +29,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         gisScript.onload = gisLoaded;
         // document.head.appendChild(gisScript);
 
-        console.log('Received message in utils:', request.data);
+        console.log('Utils: Message received.');
   
         sendResponse({ responseMessage: 'Message received by utils' });
     }
@@ -60,14 +60,6 @@ function handleAuth() {
         await addToSpreadSheet();
     };
 
-    // if (gapi.client.getToken() === null) {
-    //     // Prompt the user to select a Google Account and ask for consent to share their data
-    //     // when establishing a new session.
-    //     tokenClient.requestAccessToken({prompt: 'consent'});
-    // } else {
-    //     // Skip display of account chooser and consent dialog for an existing session.
-    //     tokenClient.requestAccessToken({prompt: ''});
-    // }
 }
 
 async function listMajors() {

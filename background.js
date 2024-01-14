@@ -10,17 +10,16 @@ chrome.runtime.onMessage.addListener(async function (request, sender, sendRespon
         const controller = new AbortController();
         const signal = controller.signal;
 
-        // Set a timeout in milliseconds (e.g., 10 seconds)
-        const timeoutDuration = 30000; // 60 seconds
-
+        // Set a timeout in milliseconds
+        const timeoutDuration = 30000;
         // Start the fetch request with the AbortController's signal
         const fetchPromise = fetch('http://localhost:8000', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(request.data), // Replace with your data
-            signal, // Attach the signal to the request
+            body: JSON.stringify(request.data),
+            signal,
         });
 
         // Set a timeout using setTimeout
@@ -70,7 +69,6 @@ chrome.runtime.onMessage.addListener(async function (request, sender, sendRespon
                 });
             });
 
-            // Continue with the rest of your code
             console.log('checking communication with background');
 
             console.log('Sending message to utils now:');
@@ -79,7 +77,6 @@ chrome.runtime.onMessage.addListener(async function (request, sender, sendRespon
             console.log("Received response from utils:", utilsResponse);
 
         } catch (error) {
-            // Handle the error appropriately
             console.error("Error in the main process:", error);
         }
     }
